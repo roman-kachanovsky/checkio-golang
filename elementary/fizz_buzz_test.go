@@ -2,7 +2,7 @@ package elementary
 
 import "testing"
 
-func TestMySolution(t *testing.T) {
+func TestFizzBuzz(t *testing.T) {
 	cases := []struct {
 		in int
 		want string
@@ -16,9 +16,9 @@ func TestMySolution(t *testing.T) {
 	}
 
 	for _, c := range cases {
-		got := my_solution(c.in)
+		got := fizz_buzz(c.in)
 		if got != c.want {
-			t.Errorf("my_solution(%d) == %q, want %q", c.in, got, c.want)
+			t.Errorf("fizz_buzz(%d) == %q, want %q", c.in, got, c.want)
 		}
 	}
 }
