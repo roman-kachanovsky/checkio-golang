@@ -16,7 +16,7 @@ func TestEvenTheLast(t *testing.T) {
 	for _, c := range cases {
 		got := even_the_last(c.in)
 		if got != c.want {
-			t.Errorf("even_the_last(%d) == %d, want %d", c.in, got, c.want)
+			t.Errorf("even_the_last(%v) == %d, want %d", c.in, got, c.want)
 		}
 	}
 }
