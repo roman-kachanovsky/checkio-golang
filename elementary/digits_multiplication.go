@@ -9,7 +9,7 @@ func digits_multiplication(n int) int {
 	for _, c := range s {
 		if string(c) != "0" {
 			i, _ := strconv.Atoi(string(c))
-			res = res * i
+			res *= i
 		}
 	}
 	return res
