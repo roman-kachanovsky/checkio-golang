@@ -62,7 +62,7 @@ func TestSumInt(t *testing.T) {
 	for _, c := range cases {
 		got := SumInt(c.in)
 		if got != c.want {
-			t.Errorf("SumInt(%q) == %d, want %d", c.in, got, c.want)
+			t.Errorf("SumInt(%v) == %d, want %d", c.in, got, c.want)
 		}
 	}
 }
@@ -83,7 +83,7 @@ func TestMaxFloat64(t *testing.T) {
 	for _, c := range cases {
 		got := MaxFloat64(c.in)
 		if got != c.want {
-			t.Errorf("MaxFloat64(%q) == %.2f, want %.2f", c.in, got, c.want)
+			t.Errorf("MaxFloat64(%v) == %.2f, want %.2f", c.in, got, c.want)
 		}
 	}
 }
@@ -104,7 +104,7 @@ func TestMinFloat64(t *testing.T) {
 	for _, c := range cases {
 		got := MinFloat64(c.in)
 		if got != c.want {
-			t.Errorf("MinFloat64(%q) == %.2f, want %.2f", c.in, got, c.want)
+			t.Errorf("MinFloat64(%v) == %.2f, want %.2f", c.in, got, c.want)
 		}
 	}
 }
