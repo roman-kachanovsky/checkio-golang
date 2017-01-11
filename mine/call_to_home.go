@@ -3,25 +3,8 @@ package mine
 import (
 	"strings"
 	"strconv"
+	"../tools"
 )
-
-func Max(a, b int) int {
-	if a < b {
-		return b
-	}
-
-	return a
-}
-
-func Sum(a []int) int {
-	var s int
-
-	for _, v := range a {
-		s += v
-	}
-
-	return s
-}
 
 func call_to_home(calls []string) int {
 	var days = make(map[string]int)
@@ -34,8 +17,8 @@ func call_to_home(calls []string) int {
 	}
 
 	for _, v := range days {
-		durations = append(durations, Max(v, v * 2 - 100))
+		durations = append(durations, tools.MaxFromPairOfInt(v, v * 2 - 100))
 	}
 
-	return Sum(durations)
+	return tools.SumInt(durations)
 }
