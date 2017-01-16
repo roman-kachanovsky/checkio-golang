@@ -1,5 +1,7 @@
 package tools
 
+import "math"
+
 // Where are my generics? :/
 
 func MaxFromPairOfInt(a, b int) int {
@@ -53,4 +55,13 @@ func MinFloat64(a []float64) float64 {
 		}
 	}
 	return smallest
+}
+
+func round(n float64) int {
+	return int(n + math.Copysign(0.5, n))
+}
+
+func ToFixed(n float64, precision int) float64 {
+	output := math.Pow(10, float64(precision))
+	return float64(round(n * output)) / output
 }

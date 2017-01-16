@@ -108,3 +108,24 @@ func TestMinFloat64(t *testing.T) {
 		}
 	}
 }
+
+func TestToFixed(t *testing.T) {
+	cases := []struct {
+		in float64
+		precision int
+		want float64
+	}{
+		{0.000001, 1, 0.0},
+		{0.5, 0, 1.0},
+		{0.45, 1, 0.5},
+		{0.1234, 2, 0.12},
+		{0.12345, 4, 0.1235},
+	}
+
+	for _, c := range cases {
+		got := ToFixed(c.in, c.precision)
+		if got != c.want {
+			t.Errorf("ToFixed(%.5f, %d) == %.5f, want %.5f", c.in, c.precision, got, c.want)
+		}
+	}
+}
