@@ -65,3 +65,16 @@ func ToFixed(n float64, precision int) float64 {
 	output := math.Pow(10, float64(precision))
 	return float64(round(n * output)) / output
 }
+
+func AllBool(a []bool) bool {
+	if len(a) == 0 {
+		return false
+	}
+
+	for _, v := range a {
+		if !v {
+			return false
+		}
+	}
+	return true
+}

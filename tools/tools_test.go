@@ -129,3 +129,25 @@ func TestToFixed(t *testing.T) {
 		}
 	}
 }
+
+func TestAllBool(t *testing.T) {
+	cases := []struct {
+		in []bool
+		want bool
+	}{
+		{[]bool{}, false},
+		{[]bool{true}, true},
+		{[]bool{false}, false},
+		{[]bool{true, true ,true}, true},
+		{[]bool{true, false, true}, false},
+		{[]bool{true, true, false}, false},
+		{[]bool{false, false, false}, false},
+	}
+
+	for _, c := range cases {
+		got := AllBool(c.in)
+		if got != c.want {
+			t.Errorf("AllBool(%v) == %v, want %v", c.in, got, c.want)
+		}
+	}
+}
