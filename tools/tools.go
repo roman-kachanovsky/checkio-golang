@@ -78,3 +78,16 @@ func AllBool(a []bool) bool {
 	}
 	return true
 }
+
+func AnyBool(a []bool) bool {
+	if len(a) == 0 {
+		return false
+	}
+
+	for _, v := range a {
+		if v {
+			return true
+		}
+	}
+	return false
+}

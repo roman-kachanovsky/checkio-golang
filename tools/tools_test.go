@@ -151,3 +151,25 @@ func TestAllBool(t *testing.T) {
 		}
 	}
 }
+
+func TestAnyBool(t *testing.T) {
+	cases := []struct {
+		in []bool
+		want bool
+	}{
+		{[]bool{}, false},
+		{[]bool{true}, true},
+		{[]bool{false}, false},
+		{[]bool{true, true ,true}, true},
+		{[]bool{true, false, true}, true},
+		{[]bool{false, true, false}, true},
+		{[]bool{false, false, false}, false},
+	}
+
+	for _, c := range cases {
+		got := AnyBool(c.in)
+		if got != c.want {
+			t.Errorf("AnyBool(%v) == %v, want %v", c.in, got, c.want)
+		}
+	}
+}
