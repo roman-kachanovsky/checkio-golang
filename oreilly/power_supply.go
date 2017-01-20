@@ -1,14 +1,6 @@
 package oreilly
 
-func stringInSlice(a []string, s string) bool {
-	for _, v := range a {
-		if v == s {
-			return true
-		}
-	}
-
-	return false
-}
+import "../tools"
 
 func findShortestPath(g map[string][]string, s, e string, p []string) []string {
 	p = append(p, s)
@@ -24,7 +16,7 @@ func findShortestPath(g map[string][]string, s, e string, p []string) []string {
 	var shortest []string = nil
 
 	for _, n := range g[s] {
-		if !stringInSlice(p, n) {
+		if !tools.StringInSlice(p, n) {
 			new_path := findShortestPath(g, n, e, p)
 			if new_path != nil && (shortest == nil || len(new_path) < len(shortest)) {
 				shortest = new_path
@@ -33,30 +25,6 @@ func findShortestPath(g map[string][]string, s, e string, p []string) []string {
 	}
 
 	return shortest
-}
-
-func removeDoublets(a []string) []string {
-	clean_slice := []string{}
-
-	for _, v := range a {
-		if !stringInSlice(clean_slice, v) {
-			clean_slice = append(clean_slice, v)
-		}
-	}
-
-	return clean_slice
-}
-
-func subtractSlices(a, b []string) []string {
-	res := []string{}
-
-	for _, v := range a {
-		if !stringInSlice(b, v) {
-			res = append(res, v)
-		}
-	}
-
-	return res
 }
 
 func power_supply(network [][]string, plants map[string]int) []string {
@@ -70,18 +38,18 @@ func power_supply(network [][]string, plants map[string]int) []string {
 				plant_names = append(plant_names, v)
 			}
 
-			if !stringInSlice(all_points, v) {
+			if !tools.StringInSlice(all_points, v) {
 				all_points = append(all_points, v)
 			}
 		}
 	}
 
-	cities = removeDoublets(cities)
+	cities = tools.MakeSetFromStringSlice(cities)
 	supply_graph := make(map[string][]string, len(all_points))
 
 	for _, k := range all_points {
 		for _, m := range network {
-			if stringInSlice(m, k) {
+			if tools.StringInSlice(m, k) {
 				if k != m[0] {
 					supply_graph[k] = append(supply_graph[k], m[0])
 				} else {
@@ -101,7 +69,6 @@ func power_supply(network [][]string, plants map[string]int) []string {
 		}
 	}
 
-	covered_cities = removeDoublets(covered_cities)
-
-	return subtractSlices(cities, covered_cities)
+	covered_cities = tools.MakeSetFromStringSlice(covered_cities)
+	return tools.SubtractStringSets(cities, covered_cities)
 }

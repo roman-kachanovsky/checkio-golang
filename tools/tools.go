@@ -91,3 +91,93 @@ func AnyBool(a []bool) bool {
 	}
 	return false
 }
+
+func StringInSlice(slice []string, value string) bool {
+	for _, v := range slice {
+		if v == value {
+			return true
+		}
+	}
+	return false
+}
+
+func IntInSlice(slice []int, value int) bool {
+	for _, v := range slice {
+		if v == value {
+			return true
+		}
+	}
+	return false
+}
+
+func FloatInSlice(slice []float64, value float64) bool {
+	for _, v := range slice {
+		if v == value {
+			return true
+		}
+	}
+	return false
+}
+
+func MakeSetFromStringSlice(slice []string) []string {
+	set := []string{}
+	for _, v := range slice {
+		if !StringInSlice(set, v) {
+			set = append(set, v)
+		}
+	}
+	return set
+}
+
+func MakeSetFromIntSlice(slice []int) []int {
+	set := []int{}
+	for _, v := range slice {
+		if !IntInSlice(set, v) {
+			set = append(set, v)
+		}
+	}
+	return set
+}
+
+func MakeSetFromFloatSlice(slice []float64) []float64 {
+	set := []float64{}
+	for _, v := range slice {
+		if !FloatInSlice(set, v) {
+			set = append(set, v)
+		}
+	}
+	return set
+}
+
+func SubtractStringSets(a, b []string) []string {
+	result := []string{}
+	for _, v := range a {
+		if !StringInSlice(b, v) {
+			result = append(result, v)
+		}
+	}
+	return result
+}
+
+func SubtractIntSets(a, b []int) []int {
+	result := []int{}
+	for _, v := range a {
+		if !IntInSlice(b, v) {
+			result = append(result, v)
+		}
+	}
+	return result
+}
+
+func SubtractFloatSets(a, b []float64) []float64 {
+	result := []float64{}
+	for _, v := range a {
+		if !FloatInSlice(b, v) {
+			result = append(result, v)
+		}
+	}
+	return result
+}
+
+// TODO: Add check if slice is set
+// TODO: Implement union, intersection and other set operations
