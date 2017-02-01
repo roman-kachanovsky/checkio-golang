@@ -1,4 +1,4 @@
 language: golang
 golang: 1.7.1
 script:
-  - "go test ./codeship ./elementary ./mine ./oreilly ./tools"
+  - "go test -v -race ./..."
